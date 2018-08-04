@@ -5,20 +5,22 @@ public class Car {
 	private String model;
 	private int year;
 	private double price;
-	private double mileage;
 	private String condition;
 
 	public Car() {
 		super();
+		make = "";
+		model = "";
+		year = 0;
+		price = 0.0;
 	}
 
-	public Car(String make, String model, int year, double price, String condition, double mileage) {
+	public Car(String make, String model, int year, double price, String condition) {
 		super();
 		this.make = make;
 		this.model = model;
 		this.year = year;
 		this.price = price;
-		this.mileage = mileage;
 		this.condition = condition;
 	}
 
@@ -57,14 +59,6 @@ public class Car {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	public double getMileage() {
-		return mileage;
-	}
-
-	public void setMileage(double mileage) {
-		this.mileage = mileage;
-	}
 	
 	public String getCondition() {
 		return condition;
@@ -80,6 +74,6 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return String.format("%1$-15s %2$-15s %3$-8s $%4$,-15.2f %5$-15s %6$,-15.2f\n", make, model, year, price, condition, mileage);
+		return String.format("%1$-15s %2$-15s %3$-8s $%4$,-15.2f %5$-15s\n", make, model, year, price, condition);
 	}
 }

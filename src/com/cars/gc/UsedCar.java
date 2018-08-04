@@ -6,7 +6,23 @@ package com.cars.gc;
 
 public class UsedCar extends Car {
 
+	private double mileage;
+
 	public UsedCar(String make, String model, int year, double price, String condition, double mileage) {
-		super(make, model, year, price, condition, mileage);
+		super(make, model, year, price, condition);
+		this.setMileage(mileage);
 	}
+
+	public double getMileage() {
+		return mileage;
+	}
+
+	public void setMileage(double mileage) {
+		this.mileage = mileage;
+	}
+	
+	@Override
+    public String toString(){
+        return super.toString() + String.format("%6$,-15.2f", getMileage());
+    }
 }

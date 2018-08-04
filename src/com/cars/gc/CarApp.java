@@ -12,9 +12,9 @@ public class CarApp {
 		Scanner scnr = new Scanner(System.in);
 		ArrayList<Car> carList = new ArrayList<>(7);
 		ArrayList<Integer> inventoryNums = new ArrayList<>(7);
-		Car a = new Car("Nikolai", "Model S", 2018, 54999.90, "new", 0);
-		Car b = new Car("Fourd", "Escapade", 2018, 31999.90, "new", 0);
-		Car c = new Car("Chewie", "Vette", 2018, 44989.95, "new", 0);
+		Car a = new Car("Nikolai", "Model S", 2018, 54999.90, "new");
+		Car b = new Car("Fourd", "Escapade", 2018, 31999.90, "new");
+		Car c = new Car("Chewie", "Vette", 2018, 44989.95, "new");
 		int userNum = 0;
 		int i = 0;
 		String purchaseCar;
@@ -39,7 +39,7 @@ public class CarApp {
 
 		do {
 
-			displayCategories(inventoryNums, carList);
+			displayInventory(inventoryNums, carList);
 
 			userNum = Validator.getInt(scnr, "\nWhich car would you like? ", 1, carList.size() + 1);
 
@@ -92,7 +92,7 @@ public class CarApp {
 		}
 	}
 
-	public static void displayCategories(ArrayList<Integer> inventoryNums, ArrayList<Car> carList) {
+	public static void displayInventory(ArrayList<Integer> inventoryNums, ArrayList<Car> carList) {
 		System.out.println("Current Inventory: ");
 		System.out.printf("%1$-4s %2$-15s %3$-15s %4$-8s %5$-15s %6$-15s %7$-15s", "", "Make", "Model", "Year", "Price",
 				"Condition", "Mileage");
