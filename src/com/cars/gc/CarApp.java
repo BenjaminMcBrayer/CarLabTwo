@@ -4,55 +4,43 @@
 package com.cars.gc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CarApp {
 
 	public static void main(String[] args) {
+		// Declare and initialize variables.
 		Scanner scnr = new Scanner(System.in);
-		ArrayList<Car> carList = new ArrayList<>(7);
-		ArrayList<Integer> inventoryNums = new ArrayList<>(7);
-		Car a = new Car("Nikolai", "Model S", 2018, 54999.90, "new");
-		Car b = new Car("Fourd", "Escapade", 2018, 31999.90, "new");
-		Car c = new Car("Chewie", "Vette", 2018, 44989.95, "new");
 		int userNum = 0;
 		int i = 0;
 		String purchaseCar;
-		UsedCar d = new UsedCar("Bugatti", "Atlantic", 1936, 99999.99, "used", 95959);
-		UsedCar e = new UsedCar("Tucker", "Torpedo", 1948, 89898.89, "used", 333333);
-		UsedCar f = new UsedCar("Alfa Romeo", "Stradale", 1967, 98786.99, "used", 67676);
+
+		// Create car and used car objects.
+		Car a = new Car("Nikolai", "Model S", 2018, 54999.90, "new");
+		Car b = new Car("Fourd", "Escapade", 2018, 31999.90, "new");
+		Car c = new Car("Chewie", "Vette", 2018, 44989.95, "new");
+		Car d = new UsedCar("Bugatti", "Atlantic", 1936, 99999.99, "used", 95959);
+		Car e = new UsedCar("Tucker", "Torpedo", 1948, 89898.89, "used", 333333);
+		Car f = new UsedCar("Alfa Romeo", "Stradale", 1967, 98786.99, "used", 67676);
 
 		// Populate ArrayLists with inventory numbers and cars.
-		inventoryNums.add(1);
-		inventoryNums.add(2);
-		inventoryNums.add(3);
-		inventoryNums.add(4);
-		inventoryNums.add(5);
-		inventoryNums.add(6);
-		inventoryNums.add(7);
-		carList.add(a);
-		carList.add(b);
-		carList.add(c);
-		carList.add(d);
-		carList.add(e);
-		carList.add(f);
+		ArrayList<Integer> inventoryNums = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+		ArrayList<Car> carList = new ArrayList<>(Arrays.asList(a, b, c, d, e, f));
 
 		do {
-
 			displayInventory(inventoryNums, carList);
 
 			userNum = Validator.getInt(scnr, "\nWhich car would you like? ", 1, carList.size() + 1);
 
-			// Exit the loop if userNum is greater than the number of Cars/UsedCars in
-			// carList.
+			// Exit loop if userNum is greater than number of Cars/UsedCars in carList.
 			if (userNum == carList.size() + 1) {
 				System.out.println("Have a great day!");
 				break;
 			} else {
 				selectAndDisplayCar(carList, userNum);
 				purchaseCar = Validator.getString(scnr, "Would you like to buy this car (y/n)? ");
-				// Remove Car/UsedCar from carList and decrease the size of inventoryNums by
-				// one.
+				// Remove Car/UsedCar from carList and decrease size of inventoryNums by one.
 				if (purchaseCar.equalsIgnoreCase("y")) {
 					System.out.println("Excellent! Our finance department will be in touch shortly.");
 					i = userNum - 1;
